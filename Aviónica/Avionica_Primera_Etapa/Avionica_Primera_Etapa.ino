@@ -72,6 +72,6 @@ void loop()
     enviarDatos();  //Enviar los datos por LoRa.
   }
 
-  //mostrarSerial();  //Muestra todos los datos en el monitor serial
+  mostrarSerial();  //Muestra todos los datos en el monitor serial
 }
 

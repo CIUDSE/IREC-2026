@@ -4,18 +4,49 @@ AVIÓNICA PRIMERA ETAPA - Misión IREC 2026 - Archivo de funciones generales
 Código desarrollado por equipo de Aviónica y Estación Terrena
 
 Archivo de funciones generales.
+
+telemetryData -> {ID etapa, Tiempo recibido, Número de paquete, Estado de vuelo, Satélites, Lat, Lon, Pres, Alt, Temp, Vel, GX, GY, GZ, AX, AY, AZ}
 *********************************************************************************************************************************************/
 #include "Avionica_Primera_Etapa.h"
 
-/*
-  
 void mostrarSerial()
 {
-  if(Serial)
-  {
-
-  }
+    Serial.print(telemetryData.id);
+    Serial.print(",");
+    Serial.print(telemetryData.tiempoRecibido);
+    Serial.print(",");
+    Serial.print(telemetryData.numPaquete);
+    Serial.print(",");
+    Serial.print(telemetryData.indicadorEstadoVuelo);
+    Serial.print(",");
+    Serial.print(sensorData.satelites);
+    Serial.print(",");
+    Serial.print(sensorData.latitud);
+    Serial.print(",");
+    Serial.print(sensorData.longitud);
+    Serial.print(",");
+    Serial.print(sensorData.presion);
+    Serial.print(",");
+    Serial.print(sensorData.altura_barometro);
+    Serial.print(",");
+    Serial.print(sensorData.temperatura);
+    Serial.print(",");
+    Serial.print(sensorData.velocidad);
+    Serial.print(",");
+    Serial.print(sensorData.vel_ang_x);
+    Serial.print(",");
+    Serial.print(sensorData.vel_ang_y);
+    Serial.print(",");
+    Serial.print(sensorData.vel_ang_z);
+    Serial.print(",");
+    Serial.print(sensorData.accel_x);
+    Serial.print(",");
+    Serial.print(sensorData.accel_y);
+    Serial.print(",");
+    Serial.print(sensorData.accel_z);
+    Serial.println();
   
+  /*
     //Imprimir en la Terminal Serial
     //Datos GPS
     Serial.println((telemetriaActual.latitud));
@@ -63,6 +94,5 @@ void mostrarSerial()
     Serial.print(",");  
 
   Serial.println("");
+  */
 }
-
-*/
