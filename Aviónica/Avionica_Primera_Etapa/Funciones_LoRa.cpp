@@ -7,7 +7,7 @@ Archivo de funciones para el LoRa RFM95.
 *********************************************************************************************************************************************/
 #include "Avionica_Primera_Etapa.h"
 
-unsigned long tiempoSegundo = 0;            // Variable usada en archivo .ino cada 1 segundo
+unsigned long tiempoSegundo = 0;            // Variable usada en archivo .ino
 unsigned long tiempoRespuesta = 0;          // Variable usada en archivo .ino 
 int contadorPaquetes = 0;                   // Variable usada en archivo .ino
 

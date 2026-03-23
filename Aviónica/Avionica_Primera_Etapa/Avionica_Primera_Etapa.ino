@@ -14,8 +14,7 @@ TinyGPSPlus by Mikal Hart
 MS5611 by Rob Tillart
 
 Estructura de envio de datos:
-telemetryData -> {ID etapa, Tiempo interno del mcu, Número de paquete, numero de evento, fuerza de la senal (esto lo hace estacion terrena), 
-, $ID,Tiempo,Paquete,Evento,RSSI,Bat,Sat,Lat,Lon,Alt,Vel,Pres,Temp,GX,GY,GZ,AX,AY,AZ\n}
+telemetryData -> {ID etapa, Tiempo recibido, Número de paquete, Estado de vuelo, Satélites, Lat, Lon, Pres, Alt, Temp, Vel, GX, GY, GZ, AX, AY, AZ}
 *********************************************************************************************************************************************/
 #include "Avionica_Primera_Etapa.h"
 
@@ -25,8 +24,8 @@ telemetryData_t telemetryData;      //Struct utilizado para envío de datos de t
 void setup() 
 {
   Serial.begin(115200);
-  if (Serial.dtr())   // solo si está abierto el puerto en PC
-    while (!Serial) delay(10);
+  if (Serial.dtr()) {   // solo si está abierto el puerto en PC
+    while (!Serial) delay(10);}
 
   SPI.begin();  // Iniciar SPI Para el Lora
   Wire.begin(); // Iniciar I2C
@@ -58,7 +57,7 @@ void loop()
 
   //etapa1();
 
-  //Enviar los datos cada 1000 ms
+  //Enviar los datos cada 500 ms
   if (millis() - tiempoSegundo >= 500) 
   {
     Serial.println("Enviando paquete: ");

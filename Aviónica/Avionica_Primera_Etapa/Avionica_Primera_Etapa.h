@@ -144,7 +144,7 @@ void leerBarometro();
 
 //Funciones Primera Etapa
 void etapa1();
+void eventoDeVuelo();
 
 //Funciones globales
-void eventoDeVuelo();
 void mostrarSerial();

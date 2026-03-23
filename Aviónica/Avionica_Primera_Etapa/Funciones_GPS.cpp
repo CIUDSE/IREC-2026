@@ -28,7 +28,7 @@ void leerGPS()
   }
 
   //GPS datos
-  if (gps.location.isUpdated() && gps.location.isValid()) 
+  if (gps.location.isUpdated()) 
   {
     //Valores de sensorData para aviónica interna
     sensorData.latitud = gps.location.lat();
