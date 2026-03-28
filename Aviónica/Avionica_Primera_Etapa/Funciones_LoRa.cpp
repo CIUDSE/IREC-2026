@@ -1,4 +1,4 @@
-/********************************************************************************************************************************************
+ /********************************************************************************************************************************************
 Club de Investigación Univesitario de Desarrollo en Sistemas Espaciales
 AVIÓNICA PRIMERA ETAPA - Misión IREC 2026 - Archivo de funciones de LoRa
 Código desarrollado por equipo de Aviónica y Estación Terrena

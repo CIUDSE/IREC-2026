@@ -59,7 +59,7 @@ typedef struct __attribute__((packed))
 telemetryData_t telemetryData;
 
 // -------------------------------------------------------------------
-
+//Hola
 
 void setup() {
   Serial.begin(115200);
@@ -124,10 +124,17 @@ void loop() {
     float alt = telemetryData.altura_barometro_32 / 100.0;
     float temp = telemetryData.temperatura_16 / 100.0;
     float pres = telemetryData.presion_32 / 100.0;
-    char datosCSV[200];
+
+    float vel_ang_x_32 = telemetryData.vel_ang_x_32 / 100.0;
+    float vel_ang_y_32 = telemetryData.vel_ang_y_32 / 100.0;
+    float vel_ang_z_32 = telemetryData.vel_ang_z_32 / 100;
+    float accel_x_32 = telemetryData.accel_x_32 / 100.0;
+    float accel_y_32 = telemetryData.accel_y_32 / 100.0;
+    float accel_z_32 = telemetryData.accel_z_32 / 100.0; 
+    char datosCSV[300];
 
     sprintf(datosCSV,
-            "%c,%u,%u,%u,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f",
+            "%c,%u,%u,%u,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",
             telemetryData.id,
             telemetryData.tiempoRecibido,
             telemetryData.numPaquete,
@@ -138,7 +145,14 @@ void loop() {
             lon,
             alt,
             temp,
-            pres);
+            pres,
+            vel_ang_x_32,
+            vel_ang_y_32,
+            vel_ang_z_32,
+            accel_x_32,
+            accel_y_32,
+            accel_z_32
+            );
     Serial.println(datosCSV);
 
     // //Imprimir en el Monitor Serial
