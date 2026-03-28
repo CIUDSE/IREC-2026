@@ -22,7 +22,7 @@ void inicializarBarometro()
   if (barometro.begin() == true) 
   {
     Serial.println("Barometro iniciado correctamente.");
-    barometro.setOversampling(OSR_STANDARD);  // activar oversampling máximo
+    //barometro.setOversampling(OSR_STANDARD);  // activar oversampling máximo
   } 
   else 
   {
@@ -30,12 +30,13 @@ void inicializarBarometro()
   }
 
    //Espera de 5 segundos para que no suelte datos random el barometro.
-  Serial.println("Esperando 5 segundos para calibrar barometro.");
+  delay(5000);
+  /*Serial.println("Esperando 5 segundos para calibrar barometro.");
   for (int i = 0; i < 50; i++) 
   {
     tiempoActual = millis();
     while (millis() - tiempoActual <= 100) {}
-  }
+  }*/
 
   //Calibra a 0 en la altura inicializada. 
   for (int i = 0; i < ajustePromedio; i++) 
@@ -51,9 +52,9 @@ void leerBarometro()
 {
   if (barometro.read() == MS5611_READ_OK)
   {
-    sensorData.presion = barometro.getPressure();                //Leer presión
+    sensorData.presion = barometro.getPressurePascal();                //Leer presión
     sensorData.temperatura = barometro.getTemperature();         //Leer temperatura
-    sensorData.altura_barometro = 44330.0 * (1.0 - pow(barometro.getPressure() / presionPromedioInicial, 0.1902949));   //Leer altura
+    sensorData.altura_barometro = barometro.getAltitude();//44330.0 * (1.0 - pow(barometro.getPressure() / presionPromedioInicial, 0.1902949));   //Leer altura
 
     //Tiempo
     unsigned long t = micros();

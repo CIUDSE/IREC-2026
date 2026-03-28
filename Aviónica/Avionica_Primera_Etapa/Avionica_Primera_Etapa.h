@@ -137,6 +137,7 @@ void leerGiroscopio();
 //Funciones GPS
 void inicializarGPS();
 void leerGPS();
+void asegurarGPS();
 
 //Funciones Barómetro
 void inicializarBarometro();

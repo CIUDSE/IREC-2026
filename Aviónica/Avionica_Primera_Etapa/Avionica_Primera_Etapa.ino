@@ -33,7 +33,9 @@ void setup()
   inicializarLora();
   inicializarGiroscopio();
   inicializarBarometro();
+  
   inicializarGPS();
+  asegurarGPS();
 
   pinMode(pinBuzzer, OUTPUT); 
   pinMode(LED, OUTPUT);
@@ -57,6 +59,7 @@ void loop()
 
   //etapa1();
 
+  
   //Enviar los datos cada 500 ms
   if (millis() - tiempoSegundo >= 500) 
   {
@@ -72,6 +75,6 @@ void loop()
     enviarDatos();  //Enviar los datos por LoRa.
   }
 
+  //enviarDatos();  //Enviar los datos por LoRa.
   mostrarSerial();  //Muestra todos los datos en el monitor serial
 }
-

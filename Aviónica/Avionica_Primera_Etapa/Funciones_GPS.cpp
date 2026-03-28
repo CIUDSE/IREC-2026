@@ -19,10 +19,11 @@ void inicializarGPS()
   Serial.println("GPS inciado");
 }
 
+
 void leerGPS()
 {
-   // Leer GPS continuamente
-  while (Serial8.available() > 0) 
+  // Leer GPS continuamente
+  while (Serial8.available()) 
   {
     gps.encode(Serial8.read());
   }
@@ -34,10 +35,22 @@ void leerGPS()
     sensorData.latitud = gps.location.lat();
     sensorData.longitud = gps.location.lng();
     sensorData.satelites = gps.satellites.value();
+  }
+  
+  //Valores convertidos a entero para enviar en la telemetría
+  telemetryData.latitud_32 = (int32_t)(sensorData.latitud * 1e6);
+  telemetryData.longitud_32 = (int32_t)(sensorData.longitud * 1e6); 
+  telemetryData.satellites = gps.satellites.value();
+}
 
-    //Valores convertidos a entero para enviar en la telemetría
-    telemetryData.latitud_32 = (int32_t)(sensorData.latitud * 1e6);
-    telemetryData.longitud_32 = (int32_t)(sensorData.longitud * 1e6); 
-    telemetryData.satellites = gps.satellites.value();
+
+void asegurarGPS()
+{
+  while (!gps.location.isValid())
+  {
+    while (Serial8.available())
+    {
+      gps.encode(Serial8.read());
+    }
   }
 }

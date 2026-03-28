@@ -25,8 +25,8 @@ void inicializarLora()
   }
 
   LoRa.setSyncWord(0xA0);
-  LoRa.setSpreadingFactor(11);      //SF modificar cuando se use la antena posiblmentente a 10
-  LoRa.setSignalBandwidth(125E3);  // SB modificar cuando la antena posiblemente a 125
+  LoRa.setSpreadingFactor(7);      //SF modificar cuando se use la antena posiblmentente a 10
+  LoRa.setSignalBandwidth(500E3);  // SB modificar cuando la antena posiblemente a 125
   LoRa.setCodingRate4(5);
 }
 

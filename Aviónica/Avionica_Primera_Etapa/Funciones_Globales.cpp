@@ -44,6 +44,8 @@ void mostrarSerial()
     Serial.print(sensorData.accel_y);
     Serial.print(",");
     Serial.print(sensorData.accel_z);
+    Serial.print(",");
+    Serial.print("Enviado");
     Serial.println();
   
   /*
