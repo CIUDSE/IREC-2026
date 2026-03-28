@@ -31,23 +31,35 @@
 // Pantalla
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-// -------------------------------------------------------------------
-typedef struct __attribute__((packed)) {
+typedef struct __attribute__((packed)) 
+{
   char id;
   uint32_t tiempoRecibido;
   uint16_t numPaquete;
   uint8_t indicadorEstadoVuelo;
+  
   uint8_t satellites;
+  int32_t latitud_32;          // *1e6
+  int32_t longitud_32;         // *1e6
 
-  int32_t latitud;      // *1e6
-  int32_t longitud;     // *1e6
-  int32_t altura_bar;   // 100
-  int16_t temperatura;  // 100
-  uint32_t presion;     // 100
+  uint32_t presion_32;         // 100
+  int32_t altura_barometro_32; // 100
+  int16_t temperatura_16;      // 100
+  int32_t velocidad_32;        // 100
+
+  int32_t vel_ang_x_32;        // 100
+  int32_t vel_ang_y_32;        // 100
+  int32_t vel_ang_z_32;        // 100
+  int32_t accel_x_32;          // 100
+  int32_t accel_y_32;          // 100
+  int32_t accel_z_32;          // 100
 
 } telemetryData_t;
 
-telemetryData_t telemetriaActual;
+telemetryData_t telemetryData;
+
+// -------------------------------------------------------------------
+
 
 void setup() {
   Serial.begin(115200);
@@ -81,8 +93,8 @@ void setup() {
   LoRa.setSyncWord(0xA0);
 
   // ESTAS LÍNEAS SON IMPORTANTES PARA LA LATENCIA
-  LoRa.setSpreadingFactor(11);      // Mínimo SF para máx velocidad
-  LoRa.setSignalBandwidth(125E3);  // Máximo BW para máx velocidad
+  LoRa.setSpreadingFactor(7);      // Mínimo SF para máx velocidad
+  LoRa.setSignalBandwidth(500E3);  // Máximo BW para máx velocidad
   LoRa.setCodingRate4(5);
   Serial.println("LoRa iniciado");
 }
@@ -101,27 +113,27 @@ void loop() {
       buffer[i] = LoRa.read();
     }
 
-    memcpy(&telemetriaActual, buffer, sizeof(buffer));  //Copiar los datos guardados en buffer a telemetryData
+    memcpy(&telemetryData, buffer, sizeof(buffer));  //Copiar los datos guardados en buffer a telemetryData
 
     int rssi = LoRa.packetRssi();
     float snr = LoRa.packetSnr();
 
 
-    float lat = telemetriaActual.latitud / 1e6;
-    float lon = telemetriaActual.longitud / 1e6;
-    float alt = telemetriaActual.altura_bar / 100.0;
-    float temp = telemetriaActual.temperatura / 100.0;
-    float pres = telemetriaActual.presion / 100.0;
+    float lat = telemetryData.latitud_32 / 1e6;
+    float lon = telemetryData.longitud_32 / 1e6;
+    float alt = telemetryData.altura_barometro_32 / 100.0;
+    float temp = telemetryData.temperatura_16 / 100.0;
+    float pres = telemetryData.presion_32 / 100.0;
     char datosCSV[200];
 
     sprintf(datosCSV,
             "%c,%u,%u,%u,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f",
-            telemetriaActual.id,
-            telemetriaActual.tiempoRecibido,
-            telemetriaActual.numPaquete,
-            telemetriaActual.indicadorEstadoVuelo,
+            telemetryData.id,
+            telemetryData.tiempoRecibido,
+            telemetryData.numPaquete,
+            telemetryData.indicadorEstadoVuelo,
             rssi,
-            telemetriaActual.satellites,
+            telemetryData.satellites,
             lat,
             lon,
             alt,
