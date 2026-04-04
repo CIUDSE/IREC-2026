@@ -126,36 +126,39 @@ void loop() {
     float alt = telemetryData.altura_barometro_32 / 100.0;
     float temp = telemetryData.temperatura_16 / 100.0;
     float pres = telemetryData.presion_32 / 100.0;
+    float velocidad = telemetryData.velocidad_32 / 100.0;
 
-    float vel_ang_x_32 = telemetryData.vel_ang_x_32 / 100.0;
-    float vel_ang_y_32 = telemetryData.vel_ang_y_32 / 100.0;
-    float vel_ang_z_32 = telemetryData.vel_ang_z_32 / 100;
-    float accel_x_32 = telemetryData.accel_x_32 / 100.0;
-    float accel_y_32 = telemetryData.accel_y_32 / 100.0;
-    float accel_z_32 = telemetryData.accel_z_32 / 100.0; 
+    float vel_ang_x_16 = telemetryData.vel_ang_x_32 / 100.0;
+    float vel_ang_y_16 = telemetryData.vel_ang_y_32 / 100.0;
+    float vel_ang_z_16 = telemetryData.vel_ang_z_32 / 100;
+    float accel_x_32 = telemetryData.accel_x_16 / 100.0;
+    float accel_y_32 = telemetryData.accel_y_16 / 100.0;
+    float accel_z_32 = telemetryData.accel_z_16 / 100.0; 
     char datosCSV[300];
 
     sprintf(datosCSV,
-            "%c,%u,%u,%u,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",
+            "$%c,%u,%u,%u,%d,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n",
             telemetryData.id,
             telemetryData.tiempoRecibido,
             telemetryData.numPaquete,
             telemetryData.indicadorEstadoVuelo,
             rssi,
+            0,//voltaje de la bateria (no tenemos el dato)
             telemetryData.satellites,
             lat,
             lon,
             alt,
-            temp,
+            velocidad,
             pres,
-            vel_ang_x_32,
-            vel_ang_y_32,
-            vel_ang_z_32,
+            temp,
+            vel_ang_x_16,
+            vel_ang_y_16,
+            vel_ang_z_16,
             accel_x_32,
             accel_y_32,
             accel_z_32
             );
-    Serial.println(datosCSV);
+    Serial.print(datosCSV);
 
     // //Imprimir en el Monitor Serial
     // Serial.print("\n-> MENSAJE: ");
