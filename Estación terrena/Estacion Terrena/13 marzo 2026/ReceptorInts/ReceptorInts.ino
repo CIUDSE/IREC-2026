@@ -22,6 +22,8 @@
 
 // Frecuencia de LoRa - DEBE COINCIDIR CON EL EMISOR - 433E6 (Asia), 868E6 (Europa), 915E6 (Norteamérica)
 #define BAND 915E6
+#define SPREADING_FACTOR 11
+#define BANDWIDTH 125E3
 
 // Tamaño de la pantalla
 #define SCREEN_WIDTH 128
@@ -34,7 +36,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 typedef struct __attribute__((packed)) 
 {
   char id;
-  uint32_t tiempoRecibido;
+  uint16_t tiempoRecibido;
   uint16_t numPaquete;
   uint8_t indicadorEstadoVuelo;
   
@@ -50,9 +52,9 @@ typedef struct __attribute__((packed))
   int32_t vel_ang_x_32;        // 100
   int32_t vel_ang_y_32;        // 100
   int32_t vel_ang_z_32;        // 100
-  int32_t accel_x_32;          // 100
-  int32_t accel_y_32;          // 100
-  int32_t accel_z_32;          // 100
+  int16_t accel_x_16;          // 100
+  int16_t accel_y_16;          // 100
+  int16_t accel_z_16;          // 100
 
 } telemetryData_t;
 
@@ -93,8 +95,8 @@ void setup() {
   LoRa.setSyncWord(0xA0);
 
   // ESTAS LÍNEAS SON IMPORTANTES PARA LA LATENCIA
-  LoRa.setSpreadingFactor(7);      // Mínimo SF para máx velocidad
-  LoRa.setSignalBandwidth(500E3);  // Máximo BW para máx velocidad
+  LoRa.setSpreadingFactor(SPREADING_FACTOR);      
+  LoRa.setSignalBandwidth(BANDWIDTH);  
   LoRa.setCodingRate4(5);
   Serial.println("LoRa iniciado");
 }
