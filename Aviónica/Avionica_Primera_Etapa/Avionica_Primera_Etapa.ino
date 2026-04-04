@@ -28,9 +28,13 @@ void setup()
   telemetryData.indicadorEstadoVuelo = 0;
 
   Serial.begin(115200);
+
+  //----DESACTIVAR CUANDO SE PONGAN PILAS --------
   if (Serial.dtr()) {   // solo si está abierto el puerto en PC
     while (!Serial) delay(10);}
+  //----------------------------------------------
 
+  
   SPI.begin();  // Iniciar SPI Para el Lora
   Wire.begin(); // Iniciar I2C
 
