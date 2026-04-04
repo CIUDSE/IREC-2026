@@ -65,8 +65,8 @@ void leerGiroscopio()
     telemetryData.vel_ang_y_32 = (int32_t)(sensorData.vel_ang_y * 100);
     telemetryData.vel_ang_z_32 = (int32_t)(sensorData.vel_ang_z * 100);
 
-    telemetryData.accel_x_32 = (int32_t)(sensorData.accel_x * 100);
-    telemetryData.accel_y_32 = (int32_t)(sensorData.accel_y * 100);
-    telemetryData.accel_z_32 = (int32_t)(sensorData.accel_z * 100); 
+    telemetryData.accel_x_16 = (int16_t)(sensorData.accel_x * 100);
+    telemetryData.accel_y_16 = (int16_t)(sensorData.accel_y * 100);
+    telemetryData.accel_z_16 = (int16_t)(sensorData.accel_z * 100); 
   } 
 }

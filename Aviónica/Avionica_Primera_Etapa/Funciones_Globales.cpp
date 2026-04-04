@@ -11,42 +11,42 @@ telemetryData -> {ID etapa, Tiempo recibido, Número de paquete, Estado de vuelo
 
 void mostrarSerial()
 {
-    Serial.print(telemetryData.id);
-    Serial.print(",");
-    Serial.print(telemetryData.tiempoRecibido);
-    Serial.print(",");
-    Serial.print(telemetryData.numPaquete);
-    Serial.print(",");
-    Serial.print(telemetryData.indicadorEstadoVuelo);
-    Serial.print(",");
-    Serial.print(sensorData.satelites);
-    Serial.print(",");
-    Serial.print(sensorData.latitud);
-    Serial.print(",");
-    Serial.print(sensorData.longitud);
-    Serial.print(",");
-    Serial.print(sensorData.presion);
-    Serial.print(",");
-    Serial.print(sensorData.altura_barometro);
-    Serial.print(",");
-    Serial.print(sensorData.temperatura);
-    Serial.print(",");
-    Serial.print(sensorData.velocidad);
-    Serial.print(",");
-    Serial.print(sensorData.vel_ang_x);
-    Serial.print(",");
-    Serial.print(sensorData.vel_ang_y);
-    Serial.print(",");
-    Serial.print(sensorData.vel_ang_z);
-    Serial.print(",");
-    Serial.print(sensorData.accel_x);
-    Serial.print(",");
-    Serial.print(sensorData.accel_y);
-    Serial.print(",");
-    Serial.print(sensorData.accel_z);
-    Serial.print(",");
-    Serial.print("Enviado");
-    Serial.println();
+  Serial.print(telemetryData.id);
+  Serial.print(",");
+  Serial.print(telemetryData.tiempoRecibido);
+  Serial.print(",");
+  Serial.print(telemetryData.numPaquete);
+  Serial.print(",");
+  Serial.print(telemetryData.indicadorEstadoVuelo);
+  Serial.print(",");
+  Serial.print(sensorData.satelites);
+  Serial.print(",");
+  Serial.print(sensorData.latitud, 6);
+  Serial.print(",");
+  Serial.print(sensorData.longitud, 6);
+  Serial.print(",");
+  Serial.print(sensorData.presion);
+  Serial.print(",");
+  Serial.print(sensorData.altura_barometro);
+  Serial.print(",");
+  Serial.print(sensorData.temperatura);
+  Serial.print(",");
+  Serial.print(sensorData.velocidad);
+  Serial.print(",");
+  Serial.print(sensorData.vel_ang_x);
+  Serial.print(",");
+  Serial.print(sensorData.vel_ang_y);
+  Serial.print(",");
+  Serial.print(sensorData.vel_ang_z);
+  Serial.print(",");
+  Serial.print(sensorData.accel_x);
+  Serial.print(",");
+  Serial.print(sensorData.accel_y);
+  Serial.print(",");
+  Serial.print(sensorData.accel_z);
+  Serial.print(",");
+  Serial.print("Enviado");
+  Serial.println();
   
   /*
     //Imprimir en la Terminal Serial

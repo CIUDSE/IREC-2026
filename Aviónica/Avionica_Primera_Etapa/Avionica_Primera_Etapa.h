@@ -13,11 +13,12 @@ Archivo header de la primera etapa con la declaración de pines y configuración
 #include <Adafruit_BNO08x.h>
 #include <SPI.h>
 #include <LoRa.h>
+#include <SD.h>
 
 //--------------------------- Pines del Teensy ---------------------------//
 //Paracaídas
-#define mainn 3
-#define drouge 4
+#define main 3
+#define drogue 4
 #define segundaEtapa 8
 
 //RFM95W Lora
@@ -48,11 +49,15 @@ extern Adafruit_BNO08x BNO08x;
 //GPS
 extern TinyGPSPlus gps;
 
+//SD
+extern File datalog;
+
 //--------------------------- Estructura de datos de telemetría ---------------------------//
+//Tiempo de envío con este struct y SF de 11 y BW de 125E3 es de 1070 ms
 typedef struct __attribute__((packed)) 
 {
   char id;
-  uint32_t tiempoRecibido;
+  uint16_t tiempoRecibido;
   uint16_t numPaquete;
   uint8_t indicadorEstadoVuelo;
   
@@ -68,9 +73,9 @@ typedef struct __attribute__((packed))
   int32_t vel_ang_x_32;        // 100
   int32_t vel_ang_y_32;        // 100
   int32_t vel_ang_z_32;        // 100
-  int32_t accel_x_32;          // 100
-  int32_t accel_y_32;          // 100
-  int32_t accel_z_32;          // 100
+  int16_t accel_x_16;          // 100
+  int16_t accel_y_16;          // 100
+  int16_t accel_z_16;          // 100
 
 } telemetryData_t;
 
@@ -99,9 +104,15 @@ extern sensorData_t sensorData;
 #define ID '1'    //ID correspondiente a la primera etapa
 
 //LoRa
+#define SYNC_WORD 0xA0
+#define SPREADING_FACTOR 11
+#define BANDWIDTH 125E3
+#define CODING_RATE 5
 extern unsigned long tiempoSegundo;
 extern unsigned long tiempoRespuesta;
 extern int contadorPaquetes;
+extern volatile bool loraEnviando;
+extern unsigned long tiempoInicioEnvio;
 
 //Giroscopio
 extern sh2_SensorValue_t sensorValue;
@@ -124,10 +135,15 @@ extern int drogueE1;
 extern int mainE2;
 extern int drogueE2;
 
+//SD
+extern char fileName[40];
+
 //--------------------------- Funciones ---------------------------//
 //Funciones LoRa
 void inicializarLora();
 void enviarDatos();
+void actualizarLora();
+void timeoutLora();
 
 //Funciones Giroscopio
 void inicializarGiroscopio();
@@ -146,6 +162,10 @@ void leerBarometro();
 //Funciones Primera Etapa
 void etapa1();
 void eventoDeVuelo();
+
+//Funciones SD
+void inicializarSD();
+void guardarSD();
 
 //Funciones globales
 void mostrarSerial();
