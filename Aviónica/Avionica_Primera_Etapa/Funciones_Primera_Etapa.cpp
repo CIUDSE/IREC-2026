@@ -19,19 +19,23 @@ Archivo de funciones para el funcionamiento de la PRIMERA ETAPA.
 *********************************************************************************************************************************************/
 #include "Avionica_Primera_Etapa.h"
 
-/*
-int desacople = 300;
-int alt_motor = 400;
+
+int desacople = 1400;
+int alt_motor = 17;
 int apogeo_etapa1 = 500;
 int apogeo_etapa2 = 500;
-int mainE1= 350;
-int drogueE1= 400;
-int mainE2= 350;
-int drogueE2= 400;
+
 
 
 void etapa1()
 {
+  if((sensorData.altura_barometro < (max_altura-150))&&(sensorData.accel_z < 0)){
+    digitalWrite(main, HIGH);
+  }else{
+    digitalWrite(main, LOW);
+  }
+
+  /*
   //telemetryData.etapa = 'S1';
   //Serial.print(telemetryData.etapa);
 
@@ -141,6 +145,5 @@ void eventoDeVuelo()
   {//Cambiar valores segun el acelerometro en reposo
       //estado: Landing
   }
+  */
 }
-
-*/

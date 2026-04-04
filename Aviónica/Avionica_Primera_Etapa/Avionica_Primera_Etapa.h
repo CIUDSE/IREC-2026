@@ -124,16 +124,14 @@ extern unsigned long tiempoActual;
 extern float alpha;                     // Factor de suavizado (0.0 a 1.0)
 extern unsigned long tAnterior;
 extern float altitudAnterior;
+extern int max_altura;
 
 //Paracaídas
 extern int desacople;
 extern int alt_motor;
 extern int apogeo_etapa1;
 extern int apogeo_etapa2;
-extern int mainE1;
-extern int drogueE1;
-extern int mainE2;
-extern int drogueE2;
+
 
 //SD
 extern char fileName[40];

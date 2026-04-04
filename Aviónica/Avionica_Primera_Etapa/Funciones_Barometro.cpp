@@ -15,6 +15,7 @@ float alpha = 0.1;                    // Factor de suavizado (0.0 a 1.0)
 unsigned long tAnterior = 0;
 float altitudAnterior = 0;
 unsigned long tiempoActual = 0;
+int max_altura = 0;
 
 void inicializarBarometro()
 {
@@ -71,7 +72,15 @@ void leerBarometro()
     telemetryData.temperatura_16 = (int16_t)(sensorData.temperatura*100);
     telemetryData.altura_barometro_32 = (int32_t)(sensorData.altura_barometro*100);
     telemetryData.velocidad_32 = (int32_t)(sensorData.velocidad*100);
+
+    //obtiene la altura maxima que ha alcanzado el cohete
+    if(sensorData.altura_barometro>max_altura){
+      max_altura = sensorData.altura_barometro;
+    }
+
   }
+
+
 
   /*
   //Barometro NATALIA
