@@ -25,7 +25,7 @@ Archivo header de la primera etapa con la declaración de pines y configuración
 #define LORA_SS   10
 #define LORA_RST   9
 #define LORA_DIO0  2
-#define BAND   915E6
+#define BAND   917E6
 
 //Led-Buzzer
 #define pinBuzzer  0
@@ -101,7 +101,7 @@ extern sensorData_t sensorData;
 // NOTA: Estas son las declaraciones de que se usarán estas variables y constantes en el código, pero cada una esta definida en su respectivo archivo
 // de función. Aquí solo se declaran, pero en cada archivo se le da su respectivo valor. Las variables aqui son tipo "extern" por ese motivo.
 
-#define ID '1'    //ID correspondiente a la primera etapa
+#define ID '2'    //ID correspondiente a la primera etapa
 
 //LoRa
 #define SYNC_WORD 0xA0

@@ -21,7 +21,7 @@
 #define OLED_RST 16  // Pin de reset
 
 // Frecuencia de LoRa - DEBE COINCIDIR CON EL EMISOR - 433E6 (Asia), 868E6 (Europa), 915E6 (Norteamérica)
-#define BAND 916E6
+#define BAND 917E6
 #define SPREADING_FACTOR 11
 #define BANDWIDTH 125E3
 
