@@ -60,7 +60,7 @@ void enviarDatos()
 void timeoutLora()
 {
   // Timeout de seguridad — libera loraEnviando si el callback no se disparó
-  if (loraEnviando && millis() - tiempoInicioEnvio > 1500)
+  if (loraEnviando && millis() - tiempoInicioEnvio > 1300)
   {
     loraEnviando = false;  // Forzar liberación
   }

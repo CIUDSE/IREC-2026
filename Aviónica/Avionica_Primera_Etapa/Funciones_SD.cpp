@@ -1,6 +1,6 @@
 /********************************************************************************************************************************************
 Club de Investigación Univesitario de Desarrollo en Sistemas Espaciales
-AVIÓNICA PRIMERA ETAPA - Misión IREC 2026 - Archivo de funciones de barometro
+AVIÓNICA PRIMERA ETAPA - Misión IREC 2026 - Archivo de funciones de memoria SD de Teensy 4.1
 Código desarrollado por equipo de Aviónica y Estación Terrena
 
 Archivo de funciones para guardar los datos en la memoria SD (Memoria de SD de Teensy 4.1).

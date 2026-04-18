@@ -61,8 +61,7 @@ void loop()
   leerGPS();
   leerBarometro();
   leerGiroscopio();
-  //eventoDeVuelo();
-  //etapa1();
+  eventoDeVuelo();
 
   //Secuencia de envio de datos por LoRa
   timeoutLora();  // Timeout de seguridad — libera loraEnviando si el callback no se disparó

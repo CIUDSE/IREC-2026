@@ -55,7 +55,7 @@ void leerBarometro()
   {
     sensorData.presion = barometro.getPressurePascal();                //Leer presión
     sensorData.temperatura = barometro.getTemperature();         //Leer temperatura
-    sensorData.altura_barometro = barometro.getAltitude();//44330.0 * (1.0 - pow(barometro.getPressure() / presionPromedioInicial, 0.1902949));   //Leer altura
+    sensorData.altura_barometro = 44330.0 * (1.0 - pow(barometro.getPressure() / presionPromedioInicial, 0.1902949));   //Leer altura
 
     //Tiempo
     unsigned long t = micros();
@@ -73,8 +73,9 @@ void leerBarometro()
     telemetryData.altura_barometro_32 = (int32_t)(sensorData.altura_barometro*100);
     telemetryData.velocidad_32 = (int32_t)(sensorData.velocidad*100);
 
-    //obtiene la altura maxima que ha alcanzado el cohete
-    if(sensorData.altura_barometro>max_altura){
+    //Obtiene la altura maxima que ha alcanzado el cohete
+    if(sensorData.altura_barometro > max_altura)
+    {
       max_altura = sensorData.altura_barometro;
     }
 

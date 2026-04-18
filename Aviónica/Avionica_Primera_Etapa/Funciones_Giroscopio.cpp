@@ -54,8 +54,8 @@ void leerGiroscopio()
       break; 
 
     case SH2_ACCELEROMETER:          //aceleracion lineal
-      sensorData.accel_z = (-1)*(sensorValue.un.accelerometer.x - 9.81); //Nuestra x es la z del cohete
-      sensorData.accel_x = sensorValue.un.accelerometer.x;
+      sensorData.accel_z = (sensorValue.un.accelerometer.x - 9.81); //Nuestra z es la x del giroscopio. Restamos la gravedad.
+      sensorData.accel_x = sensorValue.un.accelerometer.z;
       sensorData.accel_y = sensorValue.un.accelerometer.y;
       break;
     }

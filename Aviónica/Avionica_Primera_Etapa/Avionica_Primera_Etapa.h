@@ -25,7 +25,7 @@ Archivo header de la primera etapa con la declaración de pines y configuración
 #define LORA_SS   10
 #define LORA_RST   9
 #define LORA_DIO0  2
-#define BAND   917E6
+#define BAND   915E6
 
 //Led-Buzzer
 #define pinBuzzer  0
@@ -84,15 +84,15 @@ extern telemetryData_t telemetryData;
 //--------------------------- Estructura de datos de sensores ---------------------------//
 typedef struct sensorData 
 {
-  int satelites;
-  double latitud;
-  double longitud;
-  float altura_barometro;
-  float velocidad;
-  float presion;
-  float temperatura;
-  float vel_ang_x, vel_ang_y, vel_ang_z;
-  float accel_z, accel_x, accel_y;
+  int satelites = 0;
+  double latitud = 0;
+  double longitud = 0;
+  float altura_barometro = 0;
+  float velocidad = 0;
+  float presion = 0;
+  float temperatura= 0;
+  float vel_ang_x = 0, vel_ang_y = 0, vel_ang_z = 0;
+  float accel_z = 0 , accel_x = 0, accel_y = 0;
 } sensorData_t;
 
 extern sensorData_t sensorData;
@@ -106,7 +106,7 @@ extern sensorData_t sensorData;
 //LoRa
 #define SYNC_WORD 0xA0
 #define SPREADING_FACTOR 11
-#define BANDWIDTH 125E3
+#define BANDWIDTH 500E3
 #define CODING_RATE 5
 extern unsigned long tiempoSegundo;
 extern unsigned long tiempoRespuesta;
@@ -158,6 +158,7 @@ void inicializarBarometro();
 void leerBarometro();
 
 //Funciones Primera Etapa
+void activarParacaidas();
 void etapa1();
 void eventoDeVuelo();
 
