@@ -70,8 +70,8 @@ void loop() {
     telemetryData.satellites = 8; 
     
     // Coordenadas con una ligera desviacion al este para que se separen en el mapa
-    telemetryData.latitud_32 = (32.533381 + (contadorSimulacion * 0.00001)) * 1e6;
-    telemetryData.longitud_32 = (-115.725000 + (contadorSimulacion * 0.00001)) * 1e6;
+    telemetryData.latitud_32 = (32.5337045 + (contadorSimulacion * 0.00001)) * 1e6;
+    telemetryData.longitud_32 = (-115.7261352 + (contadorSimulacion * 0.00001)) * 1e6;
     
     telemetryData.altura_barometro_32 = altitudSimulada * 100;
     telemetryData.velocidad_32 = (220.0 + (contadorSimulacion % 8)) * 100; // Velocidad distinta

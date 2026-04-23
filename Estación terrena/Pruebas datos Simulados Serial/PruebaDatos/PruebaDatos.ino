@@ -70,8 +70,8 @@ void loop() {
     telemetryData.satellites = 10;
     
     // Coordenadas Base
-    telemetryData.latitud_32 = (32.533381 + (contadorSimulacion * 0.00002)) * 1e6;
-    telemetryData.longitud_32 = (-115.726130 + (contadorSimulacion * 0.000015)) * 1e6;
+    telemetryData.latitud_32 = (32.5337045 + (contadorSimulacion * 0.00002)) * 1e6;
+    telemetryData.longitud_32 = (-115.7261352 + (contadorSimulacion * 0.000015)) * 1e6;
     telemetryData.altura_barometro_32 = altitudSimulada * 100;
     telemetryData.velocidad_32 = (250.0 + (contadorSimulacion % 5)) * 100; 
     telemetryData.presion_32 = (1012.5 - (altitudSimulada * 0.1)) * 100; // Presión baja al subir
