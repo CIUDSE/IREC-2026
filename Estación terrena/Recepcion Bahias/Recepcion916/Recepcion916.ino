@@ -137,7 +137,7 @@ void loop() {
     char datosCSV[300];
 
     sprintf(datosCSV,
-            "$%c,%u,%u,%u,%d,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n",
+            "%c,%u,%u,%u,%d,%d,%u,%.6f,%.6f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n",
             telemetryData.id,
             telemetryData.tiempoRecibido,
             telemetryData.numPaquete,
@@ -194,7 +194,7 @@ void updateDisplay(int rssi, float snr, float lat, float lon, float alt, float t
   display.setCursor(0, 0);
 
   // Encabezado
-  display.println("<< DATOS RECIBIDOS >>");
+  display.println("<< DATOS RECIBIDOS ID 2 >>");
   display.drawFastHLine(0, 9, 128, SSD1306_WHITE);  // Línea divisoria
 
   // Datos

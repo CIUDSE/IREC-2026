@@ -162,7 +162,7 @@ void etapa1()
   }
 
 -----------------------------------------------------------------------
-  /*
+  
   //------------------------ Evento de vuelo 0 - Standby ------------------------//
   if((abs(sensorData.accel_z < 1)) && (inicioVuelo == false) )
   {
@@ -209,69 +209,69 @@ void etapa1()
 
 
 
-  -------------------------------------------------------------------
+  
   //telemetryData.etapa = 'S1';
   //Serial.print(telemetryData.etapa);
 
-  //------------------------ Evento de vuelo 0 - Standby ------------------------//
-  if (inicio = true)
-  {
-    if((-1 < telemetryData.accel_z < 1)&&(telemetryData.altura_barometro < 50))
-    {//Cambiar valores segun el acelerometro en reposo
-      //estado: Pre-Launch
-    }
-  }
+//   //------------------------ Evento de vuelo 0 - Standby ------------------------//
+//   if (inicio = true)
+//   {
+//     if((-1 < telemetryData.accel_z < 1)&&(telemetryData.altura_barometro < 50))
+//     {//Cambiar valores segun el acelerometro en reposo
+//       //estado: Pre-Launch
+//     }
+//   }
 
-  //------------------------ Evento de vuelo 1 - Liftoff ------------------------//
-  //si detecta aceleración positiva y su altura es mayor a 50
-  if((telemetryData.accel_z > 200)&&(telemetryData.altura_barometro > 50))
-  {//
-    //estado: Launch
-  }
+//   //------------------------ Evento de vuelo 1 - Liftoff ------------------------//
+//   //si detecta aceleración positiva y su altura es mayor a 50
+//   if((telemetryData.accel_z > 200)&&(telemetryData.altura_barometro > 50))
+//   {//
+//     //estado: Launch
+//   }
 
-  //------------------------ Evento de vuelo 2 - Separación ------------------------//
+//   //------------------------ Evento de vuelo 2 - Separación ------------------------//
 
-  if (telemetryData.altura_barometro > desacople)
-  {
-      //Activar desacople
-  }
-  //Activación del paracaidas 
-  if (telemetryData.altura_barometro > apogeo_etapa1)
-  {
-    if(telemetryData.altura_barometro < (max_altura-200))
-    {
-      //Activar paracaidas            REVISAR ESTOS IFS DE ACTIVACION DE PARACAIDAS
-    }
-  }
+//   if (telemetryData.altura_barometro > desacople)
+//   {
+//       //Activar desacople
+//   }
+//   //Activación del paracaidas 
+//   if (telemetryData.altura_barometro > apogeo_etapa1)
+//   {
+//     if(telemetryData.altura_barometro < (max_altura-200))
+//     {
+//       //Activar paracaidas            REVISAR ESTOS IFS DE ACTIVACION DE PARACAIDAS
+//     }
+//   }
 
-  //si pasa la altura del desacople activar desacople
-  if (telemetryData.altura_barometro > desacople)
-  {
-    //descople
+//   //si pasa la altura del desacople activar desacople
+//   if (telemetryData.altura_barometro > desacople)
+//   {
+//     //descople
 
-    //si detecta disminucion de velocidad detecta el apogeo
-    if(-10 < telemetryData.accel_z < 10){
-      //estado: apogeo
-    }
+//     //si detecta disminucion de velocidad detecta el apogeo
+//     if(-10 < telemetryData.accel_z < 10){
+//       //estado: apogeo
+//     }
 
-    if(telemetryData.altura_barometro < drogueE1))
-    {
-      //Activar Drogue
-      //estado: DrogueActivado
+//     if(telemetryData.altura_barometro < drogueE1))
+//     {
+//       //Activar Drogue
+//       //estado: DrogueActivado
 
-      if((telemetryData.altura_barometro < mainE1)&&())
-      {
-        //Activar Main
-        //estado: MainActivado
-      }
-      //Desactivar Main
-    }
+//       if((telemetryData.altura_barometro < mainE1)&&())
+//       {
+//         //Activar Main
+//         //estado: MainActivado
+//       }
+//       //Desactivar Main
+//     }
       
-  }
+//   }
 
-  if((telemetryData.accel_z < 1)&&(telemetryData.altura_barometro > 50))
-  {//
-      //estado: Descent
-  }
-*/
-}
+//   if((telemetryData.accel_z < 1)&&(telemetryData.altura_barometro > 50))
+//   {//
+//       //estado: Descent
+//   }
+// */
+// }
