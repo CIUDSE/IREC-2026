@@ -106,7 +106,7 @@ extern sensorData_t sensorData;
 //LoRa
 #define SYNC_WORD 0xA0
 #define SPREADING_FACTOR 11
-#define BANDWIDTH 500E3
+#define BANDWIDTH 125E3
 #define CODING_RATE 5
 extern unsigned long tiempoSegundo;
 extern unsigned long tiempoRespuesta;

@@ -32,6 +32,7 @@ typedef struct __attribute__((packed)) {
 
 telemetryData_t telemetryData;
 
+unsigned long tiempoRespuesta = 0;
 unsigned long ultimoTiempo = 0;
 int contadorSimulacion = 0;
 float altitudSimulada = 0.0;
@@ -64,7 +65,9 @@ void loop() {
 
     // Llenamos datos especificos para el Cohete 1
     telemetryData.id = '1';
-    telemetryData.tiempoRecibido = millis() / 1000;
+    unsigned long ahora = millis();
+    telemetryData.tiempoRecibido = ahora - tiempoRespuesta;
+    tiempoRespuesta = ahora;
     telemetryData.numPaquete = contadorSimulacion;
     telemetryData.indicadorEstadoVuelo = 1; 
     telemetryData.satellites = 10;
